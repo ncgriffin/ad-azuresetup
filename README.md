@@ -30,8 +30,8 @@
 
 <h3>&#9312; Create the Domain Controller</h3>
 
-- Create a virtual machine on Azure.
-- Name it DC-01 
+- Create a virtual machine on Azure
+- Name it DC-1 
 - Select Windows Server 2022: Azure Edition - x64 Gen2 as the image
 
 
@@ -44,7 +44,7 @@
 <p><strong>.</strong></p>
 <p><strong>.</strong></p>
 
-<strong> NOTE: Make sure to select at least 2 vcpus and 16 GiB memory and take note of the vnet that the VM has created.</strong>
+<strong> NOTE: Select at least 2 vcpus and 16 GiB memory and take note of the Virtual Network (vnet) that the VM has created.</strong>
 </p>
 <br />
 
@@ -58,15 +58,15 @@
 <p><strong>.</strong></p>
 
 
-<h3>&#9313; Set the Domain Controller's Private IP to static </h3>
+<h3>&#9313; Set the Domain Controller's Private IP Address to Static </h3>
 
--  Once the VM has been deployed, proceed to the VM overview page and select "Networking" on the left side. 
+-  Once the VM has been deployed, proceed to the VM overview page and select "Networking"
 <img width="400" alt="networking" src="https://imgur.com/VWQVmHK.png">
 <br>
 <br>
 <br>
 
--  Select Network Interface Card -> IP configurations -> ipconfig1 and set Private IP address allocation to static.
+-  Select Network Interface Card -> IP configurations -> ipconfig1 and set Private IP address allocation to Static
 
 <br>
 
@@ -81,13 +81,13 @@
 
 <h3>&#9314; Create the client VM </h3>
 
-- Once again create a new VM and we'll name it Client-01. We'll select Windows 10 as the image and make sure to select at least 2 vcpus and 16 GiB memory.
+- Create a new VM and this time name it Client-1. Select Windows 10 as the image and make sure to select at least 2 vcpus and 16 GiB memory.
 <img width="700" alt="VM 2 name " src="https://imgur.com/pYF0M2M.png">
 
 <br>
 <br>
 
-<p><strong> NOTE: Make sure to select the same resource group and vnet from the DC-01 VM </strong></p>
+<p><strong> NOTE: Select the same resource group and vnet from the DC-1 VM </strong></p>
 
 <p><strong>.</strong></p>
 <p><strong>.</strong></p>
@@ -97,16 +97,16 @@
 <p><strong>.</strong></p>
 <p><strong>.</strong></p>
 
-Now finalize everything and wait for its deployment.
+Finalize and wait for the VM's deployment
 
 <p><strong>.</strong></p>
 <p><strong>.</strong></p>
 
 <h3>&#9315; Ensure connectivity between Domain Controller and Client  </h3>
 
-<p>To ensure connectivity between the two VM's, we will ping the domain controller from the client.</p>
+<p>To ensure connectivity between the two VM's, we will ping the Domain Controller from the Client.</p>
 
-- First login to the Client-01 using it's public ip address and remote desktop
+- Login to Client-1 using it's Public IP Address on Remote Desktop
 
 <img width="750" alt="client 1 public ip" src="https://imgur.com/LEvHeEc.png">
 
@@ -115,7 +115,7 @@ Now finalize everything and wait for its deployment.
 <p><strong>.</strong></p>
 
 
-<p><strong> Find DC-01's private ip address in the Azure Portal and copy it. Proceed to Client-01 and open the terminal and type "ping -t (DC-01 private ip address)" </strong></p>
+<p><strong> Locate DC-1's Private IP Address in the Azure portal and copy it. Proceed to Client-1 and open the Command Prompt, type "ping -t (DC-1 Private IP Address)" </strong></p>
 
 
 <img width="720" alt="perpetual ping" src="https://imgur.com/cM7jL9C.png">
@@ -124,12 +124,12 @@ Now finalize everything and wait for its deployment.
 <br>
 <br>
 
-<p> <strong> Now notice how the request timed out, this is because ICMP v4 traffic is blocked by default on DC-01's firewall. So we will have to enable inbound ICMP traffic to allow for Client-01's ping.</strong> </p>
+<p> <strong> Notice how the request continues to time out, this is due in part because ICMPv4 traffic is blocked by default on DC-1's firewall. Therefore, we will have to enable inbound ICMP traffic to allow for Client-1's continuous ping to be successful.</strong> </p>
 
 <p><strong>.</strong></p>
 <p><strong>.</strong></p>
 
-<p><strong> Login to DC-01 using remote desktop and open windows defender firewall and select advanced settings. Sort by protocol and find both ICMP echo requests and enable both these rules by right clicking and selecting enable rule.</strong></p>
+<p><strong> Login to DC-1 using Remote Desktop -> open Windows Defender Firewall -> Select Advanced Settings -> Sort by Protocol (ICMPv4) -> Enable these specfic rules by using right click</strong></p>
 
 <br>
 
@@ -142,7 +142,7 @@ Now finalize everything and wait for its deployment.
 <p><strong>.</strong></p>
 <p><strong>.</strong></p>
 
-<p><strong> Now once the traffic has been enabled, you can check back with Client-01 and notice that the ping is now successful.</strong> </p>
+<p><strong> Once the traffic has been enabled, you can look at Client-1 and see the continuous ping is now successful.</strong> </p>
 
 <img width="650" alt="ping 2" src="https://imgur.com/MdciPsh.png">
 
