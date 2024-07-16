@@ -10,7 +10,7 @@
 
 <h2>Overview </h2>
 
-<p>In this initial project, I will set up and link two virtual machines, each with a specific function. The first virtual machine will serve as the Domain Controller (DC-1), while the second will be configured as the Client (Client-1).</p>
+<p>This a detailed tutorial for deploying an on-premises Active Directory within Azure Virtual Machines. It involves setting up and configuring a Domain Controller (DC-1) and a client machine (Client-1), both using Microsoft Azure, Active Directory Domain Services, and PowerShell. The guide includes steps for creating and configuring virtual machines, setting static IP addresses, ensuring network connectivity, and enabling ICMP traffic for communication between the machines. This setup serves as a foundation for more advanced configurations in Azure and Active Directory.</p>
 
 
 <h2>Environments and Technologies Used</h2>
